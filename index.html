@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Go To Bed — Stop Doomscrolling at Night</title>
+    <meta name="description" content="Block your apps at bedtime. Go To Bed locks your phone so you can finally sleep.">
+    <meta property="og:title" content="Go To Bed">
+    <meta property="og:description" content="Stop doomscrolling at night. Block your apps until morning.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://gotobed.app">
+    <link rel="canonical" href="https://gotobed.app">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            height: 100%;
+            overflow: hidden;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', sans-serif;
+            background: #000;
+            color: #F3F4F6;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0 10vw;
+        }
+
+        /* Starfield */
+        .starfield {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+        }
+
+        .star {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            background: #fff;
+            border-radius: 50%;
+        }
+
+        /* Layout */
+        .wrapper {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            max-width: 1200px;
+            gap: 40px;
+        }
+
+        /* Left: text content */
+        .content {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .headline {
+            font-size: clamp(2.8rem, 7vw, 5.5rem);
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            line-height: 1.05;
+            margin-bottom: 24px;
+            color: #F3F4F6;
+        }
+
+        .headline .accent {
+            color: #6495ED;
+        }
+
+        .subtitle {
+            font-size: clamp(1.3rem, 3vw, 2rem);
+            font-weight: 400;
+            color: #9CA3AF;
+            margin-bottom: 48px;
+            line-height: 1.4;
+        }
+
+        .subtitle .accent {
+            color: #6495ED;
+        }
+
+        .notify-btn {
+            display: inline-block;
+            background: #6495ED;
+            color: #000;
+            font-size: clamp(0.95rem, 2vw, 1.1rem);
+            font-weight: 700;
+            padding: 14px 36px;
+            border-radius: 50px;
+            text-decoration: none;
+            transition: opacity 0.2s ease;
+        }
+
+        .notify-btn:hover {
+            opacity: 0.85;
+        }
+
+        /* Right: phone mockup */
+        .phone-container {
+            flex-shrink: 0;
+        }
+
+        .phone {
+            width: 280px;
+            height: 570px;
+            background: #111;
+            border-radius: 44px;
+            border: 3px solid #333;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 0 60px rgba(100, 149, 237, 0.08);
+        }
+
+        /* Notch / Dynamic Island */
+        .phone-notch {
+            position: absolute;
+            top: 12px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90px;
+            height: 28px;
+            background: #000;
+            border-radius: 20px;
+            z-index: 2;
+        }
+
+        /* Screen content */
+        .phone-screen {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 60px 24px 40px;
+            background: #000;
+        }
+
+        .phone-screen .screen-time {
+            font-size: 0.75rem;
+            color: #6B7280;
+            margin-bottom: 8px;
+            letter-spacing: 0.05em;
+        }
+
+        .phone-screen .screen-title {
+            font-size: 2.8rem;
+            font-weight: 800;
+            line-height: 0.95;
+            text-align: center;
+            color: #F3F4F6;
+            margin-bottom: 24px;
+        }
+
+        .phone-screen .screen-title span {
+            display: block;
+        }
+
+        .phone-screen .screen-subtitle {
+            font-size: 0.8rem;
+            color: #6B7280;
+            text-align: center;
+            margin-bottom: 32px;
+        }
+
+        .phone-screen .screen-btn {
+            background: #6495ED;
+            color: #000;
+            font-size: 0.85rem;
+            font-weight: 700;
+            padding: 12px 36px;
+            border-radius: 50px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .phone-screen .screen-btn .phone-icon {
+            font-size: 1rem;
+        }
+
+        /* Home indicator */
+        .phone-home {
+            position: absolute;
+            bottom: 8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: #333;
+            border-radius: 2px;
+        }
+
+        /* Footer */
+        .footer {
+            position: fixed;
+            bottom: 24px;
+            left: 0;
+            right: 0;
+            z-index: 1;
+            text-align: center;
+            font-size: 0.85rem;
+        }
+
+        .footer a {
+            color: #9CA3AF;
+            text-decoration: none;
+            transition: opacity 0.2s ease;
+        }
+
+        .footer a:hover {
+            opacity: 0.7;
+        }
+
+        .footer .sep {
+            color: #4B5563;
+            margin: 0 10px;
+        }
+
+        /* Mobile */
+        @media (max-width: 900px) {
+            .wrapper {
+                flex-direction: column;
+                text-align: center;
+                gap: 48px;
+            }
+
+            body {
+                overflow: auto;
+                padding: 80px 32px 80px;
+            }
+
+            .phone {
+                width: 240px;
+                height: 490px;
+            }
+
+            .phone-screen .screen-title {
+                font-size: 2.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="starfield" id="starfield"></div>
+
+    <div class="wrapper">
+        <div class="content">
+            <h1 class="headline">
+                your phone is<br>keeping you<br><span class="accent">awake at night</span>
+            </h1>
+            <p class="subtitle">block your apps until <span class="accent">morning</span></p>
+            <a class="notify-btn" href="https://forms.gle/KfNMGcxf1gWBGyyX8" target="_blank" rel="noopener">notify me when it launches</a>
+        </div>
+
+        <div class="phone-container">
+            <div class="phone">
+                <div class="phone-notch"></div>
+                <div class="phone-screen">
+                    <p class="screen-time">unlocks at 7:00 AM</p>
+                    <div class="screen-title">
+                        <span>GO</span>
+                        <span>TO</span>
+                        <span>BED</span>
+                    </div>
+                    <p class="screen-subtitle">it's past your bedtime</p>
+                    <div class="screen-btn">
+                        <span class="phone-icon">&#128241;</span>
+                        unlock my phone
+                    </div>
+                </div>
+                <div class="phone-home"></div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <a href="/privacy">Privacy Policy</a>
+        <span class="sep">&middot;</span>
+        <a href="/support">Support</a>
+        <span class="sep">&middot;</span>
+        <a href="mailto:gustiffer@gmail.com">Contact Us</a>
+    </footer>
+
+    <script>
+        (function() {
+            var field = document.getElementById('starfield');
+            var count = 120;
+            var html = '';
+            for (var i = 0; i < count; i++) {
+                var x = (Math.random() * 100).toFixed(2);
+                var y = (Math.random() * 100).toFixed(2);
+                var opacity = (0.15 + Math.random() * 0.35).toFixed(2);
+                var size = Math.random() > 0.9 ? 2 : 1;
+                html += '<div class="star" style="left:' + x + '%;top:' + y + '%;opacity:' + opacity + ';width:' + size + 'px;height:' + size + 'px"></div>';
+            }
+            field.innerHTML = html;
+        })();
+    </script>
+</body>
+</html>
