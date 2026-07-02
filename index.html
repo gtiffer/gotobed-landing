@@ -4,12 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Go To Bed — Stop Doomscrolling at Night</title>
-    <meta name="description" content="Go To Bed locks your apps at bedtime and keeps them locked until morning. No willpower required. Coming soon to iPhone.">
+    <meta name="description" content="Go To Bed locks your apps at bedtime and keeps them locked until morning. No willpower required. Download now on the App Store.">
     <meta property="og:title" content="Go To Bed">
-    <meta property="og:description" content="Stop doomscrolling at night. Block your apps until morning.">
+    <meta property="og:description" content="Stop doomscrolling at night. Block your apps until morning. Now on the App Store.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://gotobed.app">
+    <meta property="og:image" content="https://gotobed.app/icon.png">
     <link rel="canonical" href="https://gotobed.app">
+    <link rel="icon" type="image/png" href="/favicon.png">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -118,14 +121,8 @@
         .brand .logo {
             width: 34px;
             height: 34px;
-            border-radius: 10px;
-            background: linear-gradient(150deg, #1b2b52, #0a0d1a);
-            border: 1px solid rgba(100, 149, 237, 0.4);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.1rem;
-            box-shadow: 0 0 18px var(--accent-soft);
+            display: block;
+            filter: drop-shadow(0 0 12px var(--accent-glow));
         }
 
         .nav-links {
@@ -397,15 +394,8 @@
         .lock .moon {
             width: 58px;
             height: 58px;
-            border-radius: 50%;
-            background: var(--accent-soft);
-            border: 1px solid rgba(100, 149, 237, 0.3);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.7rem;
             margin-bottom: 20px;
-            box-shadow: 0 0 30px var(--accent-soft);
+            filter: drop-shadow(0 0 24px var(--accent-glow));
         }
 
         .lock .title {
@@ -753,7 +743,7 @@
     <header>
         <nav>
             <a class="brand" href="/">
-                <span class="logo">&#127769;</span>
+                <img class="logo" src="/icon.png" alt="Go To Bed app icon">
                 Go To Bed
             </a>
             <div class="nav-links">
@@ -761,7 +751,7 @@
                 <a href="#how">How it works</a>
                 <a href="#faq">FAQ</a>
             </div>
-            <a class="appstore-badge compact" href="#" aria-label="Download on the App Store — coming soon">
+            <a class="appstore-badge compact" href="https://apps.apple.com/us/app/stop-doomscrolling-go-to-bed/id6760689112" aria-label="Download Go To Bed on the App Store">
                 <svg viewBox="0 0 814 1000" aria-hidden="true"><path d="M788.1 340.9c-5.8 4.5-108.2 62.2-108.2 190.5 0 148.4 130.3 200.9 134.2 202.2-.6 3.2-20.7 71.9-68.7 141.9-42.8 61.6-87.5 123.1-155.5 123.1s-85.5-39.5-164-39.5c-76.5 0-103.7 40.8-165.9 40.8s-105.6-57-155.5-127C46.7 790.7 0 663 0 541.8c0-194.4 126.4-297.5 250.8-297.5 66.1 0 121.2 43.4 162.7 43.4 39.5 0 101.1-46 176.3-46 28.5 0 130.9 2.6 198.3 99.2zm-234-181.5c31.1-36.9 53.1-88.1 53.1-139.3 0-7.1-.6-14.3-1.9-20.1-50.6 1.9-110.8 33.7-147.1 75.8-28.5 32.4-55.1 83.6-55.1 135.5 0 7.8 1.3 15.6 1.9 18.1 3.2.6 8.4 1.3 13.6 1.3 45.4 0 102.5-30.4 135.5-71.3z"/></svg>
                 <span class="ab-text">
                     <span class="ab-small">Download on the</span>
@@ -776,18 +766,18 @@
         <div class="container">
             <div class="hero-grid">
                 <div class="hero-copy">
+                    <span class="pill"><span class="dot"></span>Now available on the App Store</span>
                     <h1>Stop doomscrolling.<br><span class="accent">Start sleeping.</span></h1>
                     <p class="hero-sub">Go To Bed locks your apps at bedtime and keeps them locked until morning — so you can finally put the phone down. No willpower required.</p>
                     <div class="hero-cta">
                         <div class="badge-wrap">
-                            <a class="appstore-badge" href="#" aria-label="Download on the App Store — coming soon">
+                            <a class="appstore-badge" href="https://apps.apple.com/us/app/stop-doomscrolling-go-to-bed/id6760689112" aria-label="Download Go To Bed on the App Store">
                                 <svg viewBox="0 0 814 1000" aria-hidden="true"><path d="M788.1 340.9c-5.8 4.5-108.2 62.2-108.2 190.5 0 148.4 130.3 200.9 134.2 202.2-.6 3.2-20.7 71.9-68.7 141.9-42.8 61.6-87.5 123.1-155.5 123.1s-85.5-39.5-164-39.5c-76.5 0-103.7 40.8-165.9 40.8s-105.6-57-155.5-127C46.7 790.7 0 663 0 541.8c0-194.4 126.4-297.5 250.8-297.5 66.1 0 121.2 43.4 162.7 43.4 39.5 0 101.1-46 176.3-46 28.5 0 130.9 2.6 198.3 99.2zm-234-181.5c31.1-36.9 53.1-88.1 53.1-139.3 0-7.1-.6-14.3-1.9-20.1-50.6 1.9-110.8 33.7-147.1 75.8-28.5 32.4-55.1 83.6-55.1 135.5 0 7.8 1.3 15.6 1.9 18.1 3.2.6 8.4 1.3 13.6 1.3 45.4 0 102.5-30.4 135.5-71.3z"/></svg>
                                 <span class="ab-text">
                                     <span class="ab-small">Download on the</span>
                                     <span class="ab-big">App Store</span>
                                 </span>
                             </a>
-                            <span class="badge-note">(coming soon)</span>
                         </div>
                         <a class="btn btn-ghost" href="#how">See how it works</a>
                     </div>
@@ -849,7 +839,7 @@
                             <div class="phone-notch"></div>
                             <div class="lock">
                                 <div class="time">11:47 PM</div>
-                                <div class="moon">&#127769;</div>
+                                <img class="moon" src="/icon.png" alt="">
                                 <div class="title">GO TO<br>BED</div>
                                 <div class="sub">It's past your bedtime.</div>
                                 <div class="unlock-pill">&#128274; Unlocks at 7:00 AM</div>
@@ -961,16 +951,15 @@
     <section class="container">
         <div class="cta-band">
             <h2>Put your phone to bed tonight</h2>
-            <p>Go To Bed is coming soon to iPhone. Reclaim your nights and wake up clearer.</p>
+            <p>Go To Bed is out now on the App Store. Reclaim your nights and wake up clearer.</p>
             <div class="badge-wrap">
-                <a class="appstore-badge" href="#" aria-label="Download on the App Store — coming soon">
+                <a class="appstore-badge" href="https://apps.apple.com/us/app/stop-doomscrolling-go-to-bed/id6760689112" aria-label="Download Go To Bed on the App Store">
                     <svg viewBox="0 0 814 1000" aria-hidden="true"><path d="M788.1 340.9c-5.8 4.5-108.2 62.2-108.2 190.5 0 148.4 130.3 200.9 134.2 202.2-.6 3.2-20.7 71.9-68.7 141.9-42.8 61.6-87.5 123.1-155.5 123.1s-85.5-39.5-164-39.5c-76.5 0-103.7 40.8-165.9 40.8s-105.6-57-155.5-127C46.7 790.7 0 663 0 541.8c0-194.4 126.4-297.5 250.8-297.5 66.1 0 121.2 43.4 162.7 43.4 39.5 0 101.1-46 176.3-46 28.5 0 130.9 2.6 198.3 99.2zm-234-181.5c31.1-36.9 53.1-88.1 53.1-139.3 0-7.1-.6-14.3-1.9-20.1-50.6 1.9-110.8 33.7-147.1 75.8-28.5 32.4-55.1 83.6-55.1 135.5 0 7.8 1.3 15.6 1.9 18.1 3.2.6 8.4 1.3 13.6 1.3 45.4 0 102.5-30.4 135.5-71.3z"/></svg>
                     <span class="ab-text">
                         <span class="ab-small">Download on the</span>
                         <span class="ab-big">App Store</span>
                     </span>
                 </a>
-                <span class="badge-note">(coming soon)</span>
             </div>
         </div>
     </section>
@@ -979,7 +968,7 @@
     <footer>
         <div class="container footer-inner">
             <div class="brand" style="font-size:1rem;">
-                <span class="logo" style="width:28px;height:28px;font-size:0.9rem;">&#127769;</span>
+                <img class="logo" src="/icon.png" alt="" style="width:28px;height:28px;">
                 Go To Bed
             </div>
             <div class="footer-links">
